@@ -30,10 +30,26 @@ namespace AppTrombinoscope
         public ConnexionBDD()
         {
             InitializeComponent();
+            TxtBoxAddrIP.Text = Properties.Settings.Default.AdresseIP;
+            TxtBoxPort.Text = Properties.Settings.Default.Port;
+            TxtBoxUtilisateur.Text = Properties.Settings.Default.Username;
+            TxtBoxMDP.Password = Properties.Settings.Default.Password;
         }
 
         private void BtnEnregistrer_Click(object sender, RoutedEventArgs e)
         {
+
+            
+
+
+            Properties.Settings.Default.AdresseIP = TxtBoxAddrIP.Text;
+            Properties.Settings.Default.Port = TxtBoxPort.Text;
+            Properties.Settings.Default.Username = TxtBoxUtilisateur.Text;
+            Properties.Settings.Default.Password = TxtBoxMDP.Password;
+            Properties.Settings.Default.Save();
+
+
+            /*
             try
             {
                 bdd = new bddpersonnels(TxtBoxAddrIP.Text, TxtBoxUtilisateur.Text, TxtBoxMDP.Text, TxtBoxPort.Text);
@@ -41,7 +57,12 @@ namespace AppTrombinoscope
             {
                 MessageBox.Show("Erreur de connexion à la base :\n" + exception.Message, "Erreur de connexion");
             }
-            MessageBox.Show("Connexion réussie", "Succès");
+            MessageBox.Show("Connexion réussie", "Succès");*/
+        }
+
+        private void TxtBoxAddrIP_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

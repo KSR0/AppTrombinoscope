@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppTrombinoscope"
         mc:Ignorable="d"
-        Title="Paramètres d'accès à la base de données" Height="450" Width="800">
+        Title="Paramètres d'accès à la base de données" Height="450" Width="800" MaxHeight="450" MaxWidth="800" MinHeight="450" MinWidth="800">
     <Grid Background="#FF26B3B9">
         <Grid.RowDefinitions>
             <RowDefinition Height="111*"/>
@@ -24,10 +24,10 @@
         <Label Content="Adresse IP BDD" HorizontalAlignment="Left" Margin="105,69,0,0" Width="131" FontSize="16" FontWeight="Bold" Height="30" VerticalAlignment="Top"/>
         <Label Content="Mot de passe" HorizontalAlignment="Left" Margin="105,17,0,0" VerticalAlignment="Top" Height="30" Width="131" FontSize="16" FontWeight="Bold" Grid.Row="3"/>
         <Button x:Name="BtnAnnuler" Content="Annuler" Margin="60,24,222,0" VerticalAlignment="Top" Height="35" FontSize="16" FontWeight="Bold" Grid.Column="1" Grid.Row="4"/>
-        <TextBox x:Name="TxtBoxAddrIP" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="27,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="302" RenderTransformOrigin="0.506,0.967" Text="localhost"/>
+        <TextBox x:Name="TxtBoxAddrIP" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="27,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="302" RenderTransformOrigin="0.506,0.967" Text="localhost" TextChanged="TxtBoxAddrIP_TextChanged"/>
         <TextBox x:Name="TxtBoxPort" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="27,16,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="302" RenderTransformOrigin="0.506,0.967" Grid.Row="1" Text="3306"/>
         <TextBox x:Name="TxtBoxUtilisateur" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="27,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="302" RenderTransformOrigin="0.506,0.967" Grid.Row="2" Text="GestionnaireBDD"/>
-        <TextBox x:Name="TxtBoxMDP" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="27,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="302" RenderTransformOrigin="0.506,0.967" Grid.Row="3" Text="Password1234@but"/>
+        <PasswordBox x:Name="TxtBoxMDP" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="27,17,0,0" VerticalAlignment="Top" Width="302" RenderTransformOrigin="0.506,0.967" Grid.Row="3" Password="Password1234@but" />
 
     </Grid>
 </Window>
