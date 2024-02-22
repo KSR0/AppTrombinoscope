@@ -31,7 +31,12 @@ namespace AppTrombinoscope
         public MainWindow()
         {
             InitializeComponent();
-            
+            this.DataContext = new BddpersonnelDataContext();
+            BtnListePersonnel.IsEnabled = false;
+            BtnGestionServices.IsEnabled = false;
+            BtnGestionFonctions.IsEnabled = false;
+            BtnGestionPersonnels.IsEnabled = false;
+            BtnParametresBDD.IsEnabled = false;
         }
 
 
@@ -44,26 +49,40 @@ namespace AppTrombinoscope
         private void BtnConnexionBDD_Click(object sender, RoutedEventArgs e)
         {
             string addrIP = Properties.Settings.Default.AdresseIP;
-            string port = Properties.Settings.Default.Port;
+            int port = Properties.Settings.Default.Port;
             string utilisateur = Properties.Settings.Default.Username;
             string mdp = Properties.Settings.Default.Password;
-            
+
             try
             {
-                bdd = new bddpersonnels(addrIP, utilisateur, mdp, port);
+                bdd = new bddpersonnels(addrIP, utilisateur, mdp, port.ToString());
                 bdd.testerConnexion();
                 chargerDonneesLorsConnexion();
-            } catch (Exception exception)
-            {
-                MessageBox.Show("Erreur de connexion à la base :\n" + exception.Message, "Erreur de connexion");
             }
-            
-            
+            catch (Exception exception)
+            {
+                MessageBox.Show("Erreur de connexion à la base :\n" + exception.Message, "Erreur: " + exception);
+            }
         }
 
         private void chargerDonneesLorsConnexion()
         {
-            throw new NotImplementedException();
+            LstService.ItemsSource = bdd.GetServices();
+            LstFonctions.ItemsSource = bdd.GetFonctions();
+        }
+
+        private void BtnGestionnaire_Click(object sender, RoutedEventArgs e)
+        {
+            ConnexionEnGestionnaire connexionEnGestionnaire = new ConnexionEnGestionnaire();
+            connexionEnGestionnaire.ShowDialog();
+            //if (connexionEnGestionnaire.estAuthentifie)
+            //{
+            //    BtnListePersonnel.IsEnabled = true;
+            //    BtnGestionServices.IsEnabled = true;
+            //    BtnGestionFonctions.IsEnabled = true;
+            //    BtnGestionPersonnels.IsEnabled = true;
+            //    BtnParametresBDD.IsEnabled = true;
+            //}
         }
     }
 }

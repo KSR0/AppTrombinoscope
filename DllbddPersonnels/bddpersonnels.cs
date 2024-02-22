@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,42 @@ namespace BddpersonnelContext
             try
             {
                 return bdd.Personnels.ToList();
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+        }
+
+        public List<Personnel> GetPersonnel()
+        {
+            try
+            {
+                return bdd.Personnels.ToList();
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+        }
+
+        public List<Service> GetServices()
+        {
+            try
+            {
+                return bdd.Services.ToList();
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+        }
+
+        public List<Fonction> GetFonctions()
+        {
+            try
+            {
+                return bdd.Fonctions.ToList();
             }
             catch (Exception exception)
             {

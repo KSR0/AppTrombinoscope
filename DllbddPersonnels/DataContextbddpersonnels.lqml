@@ -28,4 +28,11 @@
       <Association Name="Service_Personnel" ed:AssociationGuid="bd5a9d08-cdc2-42aa-ba22-e3a60f198d81" Member="Personnels" ed:Guid="778ef1c1-55f3-4929-97f3-598dc58a2165" ThisKey="Id" OtherKey="IdService" Type="Personnel" />
     </Type>
   </Table>
+  <Table Name="bddpersonnels.admin" Member="Admins">
+    <Type Name="Admin" ed:Guid="d678f653-4ef2-4b5c-b164-a0557d797f31">
+      <Column Name="id" Member="Id" Type="System.Int32" DbType="INT(11) NOT NULL" CanBeNull="false" UpdateCheck="Never" Precision="11" ed:ValidateRequired="true" ed:Guid="2047adc4-ee26-4055-8eb1-ddacb467b340" />
+      <Column Name="nom" Member="Nom" Type="System.String" DbType="TEXT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="a0705dc8-151d-4f25-b46f-6097c1b951bf" />
+      <Column Name="`password`" Member="Password" Type="System.String" DbType="LONGTEXT NOT NULL" CanBeNull="false" UpdateCheck="Never" ed:ValidateRequired="true" ed:Guid="42f86c0f-9255-423d-9462-d0805612eb7f" />
+    </Type>
+  </Table>
 </Database>

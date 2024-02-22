@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppTrombinoscope"
         mc:Ignorable="d"
-        Title="Paramètres d'accès à la base de données" Height="450" Width="800" MaxHeight="450" MaxWidth="800" MinHeight="450" MinWidth="800">
+        Title="Paramètres d'accès à la base de données" Height="411" Width="769" MaxHeight="450" MaxWidth="800" MinHeight="450" MinWidth="800">
     <Grid Background="#FF26B3B9">
         <Grid.RowDefinitions>
             <RowDefinition Height="111*"/>
@@ -19,7 +19,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label Content="Nom d'utilisateur" HorizontalAlignment="Left" Margin="105,15,0,0" VerticalAlignment="Top" Height="30" Width="146" FontSize="16" FontWeight="Bold" Grid.Row="2"/>
-        <Button x:Name="BtnEnregistrer" Content="Enregister" Margin="222,24,60,0" VerticalAlignment="Top" Height="35" FontSize="16" FontWeight="Bold" Grid.Row="4" Click="BtnEnregistrer_Click"/>
+        <Button x:Name="BtnEnregistrer" Content="Connexion" Margin="222,24,60,0" VerticalAlignment="Top" Height="35" FontSize="16" FontWeight="Bold" Grid.Row="4" Click="BtnEnregistrer_Click"/>
         <Label Content="Port d'écoute BDD" HorizontalAlignment="Left" Margin="106,16,0,0" VerticalAlignment="Top" Height="30" Width="156" FontSize="16" FontWeight="Bold" Grid.Row="1"/>
         <Label Content="Adresse IP BDD" HorizontalAlignment="Left" Margin="105,69,0,0" Width="131" FontSize="16" FontWeight="Bold" Height="30" VerticalAlignment="Top"/>
         <Label Content="Mot de passe" HorizontalAlignment="Left" Margin="105,17,0,0" VerticalAlignment="Top" Height="30" Width="131" FontSize="16" FontWeight="Bold" Grid.Row="3"/>

@@ -25,15 +25,24 @@ namespace AppTrombinoscope
         {
             InitializeComponent();
             TxtBoxAddrIP.Text = Properties.Settings.Default.AdresseIP;
-            TxtBoxPort.Text = Properties.Settings.Default.Port;
+            TxtBoxPort.Text = Properties.Settings.Default.Port.ToString();
             TxtBoxUtilisateur.Text = Properties.Settings.Default.Username;
             TxtBoxMDP.Password = Properties.Settings.Default.Password;
         }
 
         private void BtnEnregistrer_Click(object sender, RoutedEventArgs e)
         {
+
             Properties.Settings.Default.AdresseIP = TxtBoxAddrIP.Text;
-            Properties.Settings.Default.Port = TxtBoxPort.Text;
+            try
+            {
+                Properties.Settings.Default.Port = int.Parse(TxtBoxPort.Text);
+            }
+            catch (FormatException exception)
+            {
+                MessageBox.Show("Le port ne peut contenir que des chiffres !\n", "Erreur");
+                return;
+            }
             Properties.Settings.Default.Username = TxtBoxUtilisateur.Text;
             Properties.Settings.Default.Password = TxtBoxMDP.Password;
             Properties.Settings.Default.Save();
@@ -44,5 +53,6 @@ namespace AppTrombinoscope
         {
             Close();
         }
+
     }
 }

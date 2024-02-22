@@ -20,11 +20,11 @@
         </Grid.ColumnDefinitions>
         <Menu Height="32" VerticalAlignment="Top" Background="#FF54F8FF" Margin="0,0,0,0" Grid.ColumnSpan="5">
             <MenuItem x:Name="BtnConnexionBDD" Header="Connexion BDD" FontWeight="Bold" Margin="5,0,5,0" Click="BtnConnexionBDD_Click"/>
-            <MenuItem Header="Liste du Personnel" FontWeight="Bold" Margin="5,0,5,0"/>
-            <MenuItem Header="Gestion : Services" FontWeight="Bold" Margin="5,0,5,0"/>
-            <MenuItem Header="Gestion : Fonctions" FontWeight="Bold" Margin="5,0,5,0"/>
-            <MenuItem Header="Gestion : Personnels" FontWeight="Bold" Margin="5,0,5,0"/>
-            <MenuItem Header="Gestionnaire" FontWeight="Bold" Margin="5,0,5,0"/>
+            <MenuItem x:Name="BtnListePersonnel" Header="Liste du Personnel" FontWeight="Bold" Margin="5,0,5,0"/>
+            <MenuItem x:Name="BtnGestionServices" Header="Gestion : Services" FontWeight="Bold" Margin="5,0,5,0"/>
+            <MenuItem x:Name="BtnGestionFonctions" Header="Gestion : Fonctions" FontWeight="Bold" Margin="5,0,5,0"/>
+            <MenuItem x:Name="BtnGestionPersonnels" Header="Gestion : Personnels" FontWeight="Bold" Margin="5,0,5,0"/>
+            <MenuItem x:Name="BtnGestionnaire" Header="Gestionnaire" FontWeight="Bold" Margin="5,0,5,0" Click="BtnGestionnaire_Click"/>
             <MenuItem x:Name="BtnParametresBDD" Header="Paramètre BDD" Height="32" Width="100" Margin="25,0,25,0" FontWeight="Bold" Click="BtnParametresBDD_Click"/>
         </Menu>
         <Label Content="Service" Margin="96,0,66,9" FontWeight="Bold" RenderTransformOrigin="0.466,2.071" HorizontalAlignment="Center" Height="28" VerticalAlignment="Bottom"/>
@@ -35,17 +35,17 @@
         <Label Content="Service :" HorizontalAlignment="Right" Height="28" Margin="0,179,10,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Grid.Column="3" Grid.Row="1"/>
         <Label Content="Fonction :" HorizontalAlignment="Right" Height="28" Margin="0,225,10,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Grid.Column="3" Grid.Row="1"/>
         <Label Content="Téléphone :" HorizontalAlignment="Right" Height="28" Margin="0,279,10,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Grid.Column="3" Grid.Row="1"/>
-        <ListView Name="LstService" Margin="46,10,18,35" Grid.Row="1">
+        <ListView x:Name="LstService" Margin="46,10,18,35" Grid.Row="1">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header="Intitule" DisplayMemberBinding="{Binding Intitule}"/>
                 </GridView>
             </ListView.View>
         </ListView>
         <ListView Name="LstFonctions" Margin="14,10,22,35" Grid.Column="1" Grid.Row="1">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header="Intitule" DisplayMemberBinding="{Binding Intitule}"/>
                 </GridView>
             </ListView.View>
         </ListView>
