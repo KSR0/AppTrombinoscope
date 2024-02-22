@@ -694,7 +694,7 @@
           <Scale>1</Scale>
           <Location>
             <X>-228 px</X>
-            <Y>-209.375 px</Y>
+            <Y>-209 px</Y>
           </Location>
         </ViewPort>
         <Oid xsi:type="SchemaModelOID">

@@ -22,6 +22,7 @@ namespace AppTrombinoscope
     public partial class MainWindow : Window
     {
         private static bddpersonnels bdd;
+        private bool connexionValide = false;
 
         public static bddpersonnels Bdd
         {
@@ -36,7 +37,6 @@ namespace AppTrombinoscope
             BtnGestionServices.IsEnabled = false;
             BtnGestionFonctions.IsEnabled = false;
             BtnGestionPersonnels.IsEnabled = false;
-            BtnParametresBDD.IsEnabled = false;
         }
 
 
@@ -57,15 +57,21 @@ namespace AppTrombinoscope
             {
                 bdd = new bddpersonnels(addrIP, utilisateur, mdp, port.ToString());
                 bdd.testerConnexion();
-                chargerDonneesLorsConnexion();
+                ChargerDonneesLorsConnexion();
+                connexionValide = true;
             }
             catch (Exception exception)
             {
                 MessageBox.Show("Erreur de connexion à la base :\n" + exception.Message, "Erreur: " + exception);
+                connexionValide = false;
+                BtnListePersonnel.IsEnabled = false;
+                BtnGestionServices.IsEnabled = false;
+                BtnGestionFonctions.IsEnabled = false;
+                BtnGestionPersonnels.IsEnabled = false;
             }
         }
 
-        private void chargerDonneesLorsConnexion()
+        private void ChargerDonneesLorsConnexion()
         {
             LstService.ItemsSource = bdd.GetServices();
             LstFonctions.ItemsSource = bdd.GetFonctions();
@@ -73,16 +79,21 @@ namespace AppTrombinoscope
 
         private void BtnGestionnaire_Click(object sender, RoutedEventArgs e)
         {
-            ConnexionEnGestionnaire connexionEnGestionnaire = new ConnexionEnGestionnaire();
+            if (!connexionValide)
+            {
+                MessageBox.Show("Veuillez vous connecter !", "Erreur de connexion");
+                return;
+            }
+
+            ConnexionEnGestionnaire connexionEnGestionnaire = new ConnexionEnGestionnaire(bdd);
             connexionEnGestionnaire.ShowDialog();
-            //if (connexionEnGestionnaire.estAuthentifie)
-            //{
-            //    BtnListePersonnel.IsEnabled = true;
-            //    BtnGestionServices.IsEnabled = true;
-            //    BtnGestionFonctions.IsEnabled = true;
-            //    BtnGestionPersonnels.IsEnabled = true;
-            //    BtnParametresBDD.IsEnabled = true;
-            //}
+            if (connexionEnGestionnaire.EstAuthentifie)
+            {
+                BtnListePersonnel.IsEnabled = true;
+                BtnGestionServices.IsEnabled = true;
+                BtnGestionFonctions.IsEnabled = true;
+                BtnGestionPersonnels.IsEnabled = true;
+            }
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppTrombinoscope"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="920">
+        Title="Trombinoscope" Height="500" Width="920">
     <Grid Background="#FF26B3B9" >
         <Grid.RowDefinitions>
             <RowDefinition Height="124*"/>

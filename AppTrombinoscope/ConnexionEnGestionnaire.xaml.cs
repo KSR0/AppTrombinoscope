@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BddpersonnelContext;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +20,28 @@ namespace AppTrombinoscope
     /// </summary>
     public partial class ConnexionEnGestionnaire : Window
     {
-        public ConnexionEnGestionnaire()
+        private bddpersonnels bdd;
+        private bool estAuthentifie;
+        public bool EstAuthentifie
         {
-            InitializeComponent();
+            get => estAuthentifie;
         }
 
-        private void BtnEnregistrer_Click(object sender, RoutedEventArgs e)
+        public ConnexionEnGestionnaire(bddpersonnels bdd)
         {
-            MessageBox.Show("test");
+            InitializeComponent();
+            this.bdd = bdd;
+        }
+
+        private void BtnConnexion_Click(object sender, RoutedEventArgs e)
+        {
+            estAuthentifie = bdd.GestionnaireExiste(TxtBoxUtilisateur.Text, PasswordBoxMDP.Password);
+            if (!estAuthentifie)
+            {
+                MessageBox.Show("Nom d'utilisateur ou mot de passe faux !", "Erreur lors de la connexion");
+                return;
+            }
+            Close();
         }
 
         private void BtnAnnuler_Click(object sender, RoutedEventArgs e)

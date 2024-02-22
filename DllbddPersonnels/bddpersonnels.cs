@@ -64,5 +64,10 @@ namespace BddpersonnelContext
                 throw exception;
             }
         }
+
+        public bool GestionnaireExiste(string utilisateur, string mdp)
+        {
+            return bdd.Admins.Any(admin => admin.Nom == utilisateur && admin.Password == mdp);
+        }
     }
 }
