@@ -15,7 +15,8 @@ namespace BddpersonnelContext
                bdd = new BddpersonnelDataContext("User Id=" + utilisateur + ";Password=" + mdp + ";Host=" + addrIP + ";Port=" + port + ";Database=bddpersonnels;Persist Security Info=True");
         }
 
-        public List<Personnel> getAll()
+        // Besoin pour verifier la connexion avec la bdd
+        public List<Personnel> getNothing()
         {
             try
             {
