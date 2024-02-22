@@ -37,6 +37,7 @@ namespace AppTrombinoscope
             BtnGestionServices.IsEnabled = false;
             BtnGestionFonctions.IsEnabled = false;
             BtnGestionPersonnels.IsEnabled = false;
+            this.Title = "Trombinoscope (Connecté en tant que : Utilisateur)";
         }
 
 
@@ -89,6 +90,8 @@ namespace AppTrombinoscope
             connexionEnGestionnaire.ShowDialog();
             if (connexionEnGestionnaire.EstAuthentifie)
             {
+                bdd = connexionEnGestionnaire.Bdd;
+                this.Title = "Trombinoscope (Connecté en tant que : Gestionnaire)";
                 BtnListePersonnel.IsEnabled = true;
                 BtnGestionServices.IsEnabled = true;
                 BtnGestionFonctions.IsEnabled = true;
