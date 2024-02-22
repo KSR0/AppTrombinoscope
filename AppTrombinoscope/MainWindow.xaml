@@ -1,0 +1,66 @@
+﻿<Window x:Class="AppTrombinoscope.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppTrombinoscope"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="920">
+    <Grid Background="#FF26B3B9" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="124*"/>
+            <RowDefinition Height="345*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="214*"/>
+            <ColumnDefinition Width="186*"/>
+            <ColumnDefinition Width="191*"/>
+            <ColumnDefinition Width="88*"/>
+            <ColumnDefinition Width="233*"/>
+        </Grid.ColumnDefinitions>
+        <Menu Height="32" VerticalAlignment="Top" Background="#FF54F8FF" Margin="0,0,0,0" Grid.ColumnSpan="5">
+            <MenuItem x:Name="BtnConnexionBDD" Header="Connexion BDD" FontWeight="Bold" Margin="5,0,5,0" Click="BtnConnexionBDD_Click"/>
+            <MenuItem Header="Liste du Personnel" FontWeight="Bold" Margin="5,0,5,0"/>
+            <MenuItem Header="Gestion : Services" FontWeight="Bold" Margin="5,0,5,0"/>
+            <MenuItem Header="Gestion : Fonctions" FontWeight="Bold" Margin="5,0,5,0"/>
+            <MenuItem Header="Gestion : Personnels" FontWeight="Bold" Margin="5,0,5,0"/>
+            <MenuItem Header="Gestionnaire" FontWeight="Bold" Margin="5,0,5,0"/>
+            <MenuItem x:Name="BtnParametresBDD" Header="Paramètre BDD" Height="32" Width="100" Margin="25,0,25,0" FontWeight="Bold" Click="BtnParametresBDD_Click"/>
+        </Menu>
+        <Label Content="Service" Margin="96,0,66,9" FontWeight="Bold" RenderTransformOrigin="0.466,2.071" HorizontalAlignment="Center" Height="28" VerticalAlignment="Bottom"/>
+        <Label Content="Fonctions" Margin="60,0,60,9" FontWeight="Bold" Grid.Column="1" RenderTransformOrigin="0.2,0.464" Height="28" VerticalAlignment="Bottom"/>
+        <Label Content="Membres" Margin="60,0,60,9" FontWeight="Bold" Grid.Column="2" RenderTransformOrigin="0.36,0.5" Height="28" VerticalAlignment="Bottom"/>
+        <Label Content="Nom :" Height="28" Margin="0,10,10,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="3" HorizontalAlignment="Right" Width="75" Grid.Row="1"/>
+        <Label Content="Prénom :" HorizontalAlignment="Right" Height="28" Margin="0,53,10,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Grid.Column="3" Grid.Row="1"/>
+        <Label Content="Service :" HorizontalAlignment="Right" Height="28" Margin="0,179,10,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Grid.Column="3" Grid.Row="1"/>
+        <Label Content="Fonction :" HorizontalAlignment="Right" Height="28" Margin="0,225,10,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Grid.Column="3" Grid.Row="1"/>
+        <Label Content="Téléphone :" HorizontalAlignment="Right" Height="28" Margin="0,279,10,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Grid.Column="3" Grid.Row="1"/>
+        <ListView Name="LstService" Margin="46,10,18,35" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView Name="LstFonctions" Margin="14,10,22,35" Grid.Column="1" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView Name="LstMembres" Margin="13,10,28,35" Grid.Column="2" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox Name="TxtBoxNom" Height="28" Margin="43,10,84,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="4" Grid.Row="1"/>
+        <TextBox Name="TxtBoxPrenom" Height="28" Margin="43,53,84,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="4" Grid.Row="1"/>
+        <TextBox Name="TxtBoxService" Height="28" Margin="43,179,84,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="4" Grid.Row="1"/>
+        <TextBox Name="TxtBoxFonction" Height="28" Margin="43,225,84,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.632,7.714" Grid.Column="4" Grid.Row="1"/>
+        <TextBox Name="TxtBoxTelephone" Height="28" Margin="43,279,84,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="4" Grid.Row="1"/>
+
+    </Grid>
+</Window>
