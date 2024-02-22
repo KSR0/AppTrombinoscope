@@ -23,6 +23,14 @@ namespace AppTrombinoscope
         public MainWindow()
         {
             InitializeComponent();
+            
+        }
+
+
+        private void BtnConnexionBDD_Click(object sender, RoutedEventArgs e)
+        {
+            ConnexionBDD connexionBDD = new ConnexionBDD();
+            connexionBDD.ShowDialog();
         }
     }
 }

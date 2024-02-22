@@ -19,7 +19,7 @@
             <ColumnDefinition Width="233*"/>
         </Grid.ColumnDefinitions>
         <Menu Height="32" VerticalAlignment="Top" Background="#FF54F8FF" Margin="0,0,0,0" Grid.ColumnSpan="5">
-            <MenuItem Header="Connexion BDD" FontWeight="Bold" Margin="5,0,5,0"/>
+            <MenuItem x:Name="BtnConnexionBDD" Header="Connexion BDD" FontWeight="Bold" Margin="5,0,5,0" Click="BtnConnexionBDD_Click"/>
             <MenuItem Header="Liste du Personnel" FontWeight="Bold" Margin="5,0,5,0"/>
             <MenuItem Header="Gestion : Services" FontWeight="Bold" Margin="5,0,5,0"/>
             <MenuItem Header="Gestion : Fonctions" FontWeight="Bold" Margin="5,0,5,0"/>

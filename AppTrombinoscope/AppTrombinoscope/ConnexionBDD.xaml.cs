@@ -37,11 +37,17 @@ namespace AppTrombinoscope
             try
             {
                 bdd = new bddpersonnels(TxtBoxAddrIP.Text, TxtBoxUtilisateur.Text, TxtBoxMDP.Text, TxtBoxPort.Text);
+                bdd.getAll();
+                MessageBox.Show("Connexion réussie", "Succès");
             } catch (Exception exception)
             {
                 MessageBox.Show("Erreur de connexion à la base :\n" + exception.Message, "Erreur de connexion");
             }
-            MessageBox.Show("Connexion réussie", "Succès");
+        }
+
+        private void BtnAnnuler_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

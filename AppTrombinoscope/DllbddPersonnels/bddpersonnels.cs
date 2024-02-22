@@ -8,16 +8,22 @@ namespace BddpersonnelContext
 {
     public class bddpersonnels
     {
-        private BddpersonnelDataContext bdd;
+        public BddpersonnelDataContext bdd;
 
         public bddpersonnels(string addrIP, string utilisateur, string mdp, string port)
         {
+               bdd = new BddpersonnelDataContext("User Id=" + utilisateur + ";Password=" + mdp + ";Host=" + addrIP + ";Port=" + port + ";Database=bddpersonnels;Persist Security Info=True");
+        }
+
+        public List<Personnel> getAll()
+        {
             try
             {
-                bdd = new BddpersonnelDataContext("User Id=" + utilisateur + ";Password=" + mdp + ";Host=" + addrIP + ";Port=" + port + ";Database=bddrationnel;Persist Security Info=True");
-            } catch (Exception e)
+                return bdd.Personnels.ToList();
+            }
+            catch (Exception exception)
             {
-                throw e;
+                throw exception;
             }
         }
     }
