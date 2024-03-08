@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Devart.Data.MySql;
 
 namespace BddpersonnelContext
 {
@@ -68,6 +69,92 @@ namespace BddpersonnelContext
         public bool GestionnaireExiste(string utilisateur, string mdp)
         {
             return bdd.Admins.Any(admin => admin.Nom == utilisateur && admin.Password == mdp);
+        }
+
+        public int SupprServices(Service item)
+        {
+            try
+            {
+                bdd.Services.DeleteOnSubmit(item);
+                bdd.SubmitChanges();
+            }
+            catch (MySqlException exception)
+            {
+                return -1;
+            }
+            catch (Exception exception)
+            {
+                return -1;
+            }
+            return 1;
+        }
+
+        public void AddServices(string nom)
+        {
+            try
+            {
+                Service item = new Service();
+                item.Intitule = nom;
+                bdd.Services.InsertOnSubmit(item);
+                bdd.SubmitChanges();
+            }
+            catch (MySqlException exception)
+            {
+                throw exception;
+            }
+        }
+
+        public void UpdateServices(string nom, Service item)
+        {
+            try
+            {
+                item.Intitule = nom;
+            }
+            catch (MySqlException exception)
+            {
+                throw exception;
+            }
+        }
+
+        public void SupprFonctions(Fonction item)
+        {
+            try
+            {
+                bdd.Fonctions.DeleteOnSubmit(item);
+                bdd.SubmitChanges();
+            }
+            catch (MySqlException exception)
+            {
+                throw exception;
+            }
+        }
+
+        public void UpdateFonctions(Fonction item)
+        {
+            try
+            {
+                bdd.Fonctions.DeleteOnSubmit(item);
+                bdd.SubmitChanges();
+            }
+            catch (MySqlException exception)
+            {
+                throw exception;
+            }
+        }
+
+        public void AddFonctions(string nom)
+        {
+            try
+            {
+                Fonction item = new Fonction();
+                item.Intitule = nom;
+                bdd.Fonctions.InsertOnSubmit(item);
+                bdd.SubmitChanges();
+            }
+            catch (MySqlException exception)
+            {
+                throw exception;
+            }
         }
     }
 }

@@ -21,7 +21,7 @@
         <Menu Height="32" VerticalAlignment="Top" Background="#FF54F8FF" Margin="0,0,0,0" Grid.ColumnSpan="5">
             <MenuItem x:Name="BtnConnexionBDD" Header="Connexion BDD" FontWeight="Bold" Margin="5,0,5,0" Click="BtnConnexionBDD_Click"/>
             <MenuItem x:Name="BtnListePersonnel" Header="Liste du Personnel" FontWeight="Bold" Margin="5,0,5,0"/>
-            <MenuItem x:Name="BtnGestionServices" Header="Gestion : Services" FontWeight="Bold" Margin="5,0,5,0"/>
+            <MenuItem x:Name="BtnGestionServices" Header="Gestion : Services" FontWeight="Bold" Margin="5,0,5,0" Click="BtnGestionServices_Click"/>
             <MenuItem x:Name="BtnGestionFonctions" Header="Gestion : Fonctions" FontWeight="Bold" Margin="5,0,5,0"/>
             <MenuItem x:Name="BtnGestionPersonnels" Header="Gestion : Personnels" FontWeight="Bold" Margin="5,0,5,0"/>
             <MenuItem x:Name="BtnGestionnaire" Header="Gestionnaire" FontWeight="Bold" Margin="5,0,5,0" Click="BtnGestionnaire_Click"/>
@@ -35,7 +35,7 @@
         <Label Content="Service :" HorizontalAlignment="Right" Height="28" Margin="0,179,10,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Grid.Column="3" Grid.Row="1"/>
         <Label Content="Fonction :" HorizontalAlignment="Right" Height="28" Margin="0,225,10,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Grid.Column="3" Grid.Row="1"/>
         <Label Content="Téléphone :" HorizontalAlignment="Right" Height="28" Margin="0,279,10,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Grid.Column="3" Grid.Row="1"/>
-        <ListView x:Name="LstService" Margin="46,10,18,35" Grid.Row="1">
+        <ListView x:Name="LstService" Margin="46,10,18,35" Grid.Row="1" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Intitule" DisplayMemberBinding="{Binding Intitule}"/>
