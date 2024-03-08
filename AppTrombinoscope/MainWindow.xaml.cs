@@ -38,6 +38,15 @@ namespace AppTrombinoscope
             BtnGestionFonctions.IsEnabled = false;
             BtnGestionPersonnels.IsEnabled = false;
             this.Title = "Trombinoscope (Connecté en tant que : Utilisateur)";
+
+            // A DELETE
+
+            bdd = new bddpersonnels("localhost", "UtilisateurBDD", "Password1234@", "3306");
+            GestionPersonnel gestionPersonnel = new GestionPersonnel(bdd);
+            gestionPersonnel.ShowDialog();
+            Close();
+
+            //
         }
 
 
@@ -97,6 +106,15 @@ namespace AppTrombinoscope
                 BtnGestionFonctions.IsEnabled = true;
                 BtnGestionPersonnels.IsEnabled = true;
             }
+        }
+
+        private void BtnGestionPersonnels_Click(object sender, RoutedEventArgs e)
+        {
+            GestionPersonnel gestionPersonnel = new GestionPersonnel(bdd);
+            gestionPersonnel.ShowDialog();
+
+            // INSERER DANS LA BASE le personnel
+
         }
     }
 }

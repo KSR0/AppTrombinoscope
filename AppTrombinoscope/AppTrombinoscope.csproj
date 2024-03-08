@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -59,6 +60,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GestionPersonnel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ParametresBDD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -73,6 +78,9 @@
     </Compile>
     <Compile Include="ConnexionEnGestionnaire.xaml.cs">
       <DependentUpon>ConnexionEnGestionnaire.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GestionPersonnel.xaml.cs">
+      <DependentUpon>GestionPersonnel.xaml</DependentUpon>
     </Compile>
     <Compile Include="ParametresBDD.xaml.cs">
       <DependentUpon>ParametresBDD.xaml</DependentUpon>
@@ -113,6 +121,9 @@
       <Project>{d72ea0c0-2ac6-4e54-8e0a-baf878edf967}</Project>
       <Name>DllbddPersonnels</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="account-25-256.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
