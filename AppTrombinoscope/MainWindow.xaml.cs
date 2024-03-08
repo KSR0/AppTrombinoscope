@@ -37,14 +37,13 @@ namespace AppTrombinoscope
             BtnGestionServices.IsEnabled = false;
             BtnGestionFonctions.IsEnabled = false;
             BtnGestionPersonnels.IsEnabled = false;
-            this.Title = "Trombinoscope (Connecté en tant que : Utilisateur)";
 
             // A DELETE
 
-            bdd = new bddpersonnels("localhost", "UtilisateurBDD", "Password1234@", "3306");
-            GestionPersonnel gestionPersonnel = new GestionPersonnel(bdd);
-            gestionPersonnel.ShowDialog();
-            Close();
+            //bdd = new bddpersonnels("localhost", "GestionnaireBDD", "Password1234@but", "3306");
+            //GestionPersonnel gestionPersonnel = new GestionPersonnel(bdd);
+            //gestionPersonnel.ShowDialog();
+            //Close();
 
             //
         }
@@ -69,6 +68,7 @@ namespace AppTrombinoscope
                 bdd.testerConnexion();
                 ChargerDonneesLorsConnexion();
                 connexionValide = true;
+                this.Title = "Trombinoscope (Connecté en tant que : Utilisateur)";
             }
             catch (Exception exception)
             {

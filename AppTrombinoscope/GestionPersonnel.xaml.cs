@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.IO;
+using MessageBox = System.Windows.MessageBox;
 
 namespace AppTrombinoscope
 {
@@ -22,30 +23,46 @@ namespace AppTrombinoscope
     /// </summary>
     public partial class GestionPersonnel : Window
     {
+        private string blob = string.Empty;
+        private bddpersonnels bdd;
         public GestionPersonnel(bddpersonnels bdd)
         {
             InitializeComponent();
+            this.bdd = bdd;
             LstBoxServices.ItemsSource = bdd.GetServices();
             LstBoxFonctions.ItemsSource = bdd.GetFonctions();
         }
 
-        private void BtnEnregistrer_Click(object sender, RoutedEventArgs e)
+        private void BtnAjouter_Click(object sender, RoutedEventArgs e)
         {
             if (TxtBoxNom.Text.Length == 0 || 
                 TxtBoxPrenom.Text.Length == 0 || 
                 TxtBoxTelephone.Text.Length == 0 || 
                 LstBoxServices.SelectedIndex == -1 ||
-                LstBoxFonctions.SelectedIndex == -1)
+                LstBoxFonctions.SelectedIndex == -1 ||
+                blob.Length == 0)
             {
-                System.Windows.MessageBox.Show("Champ(s) vide(s) !", "Veuille remplir tous les champs !");
+                MessageBox.Show("Veuillez remplir tous les champs !", "Champ(s) vide(s) !");
                 return ;
             }
 
-            System.Windows.MessageBox.Show("Service : " + ((Service)LstBoxServices.SelectedItem).Intitule + 
-                " Fonction : " + ((Fonction)LstBoxFonctions.SelectedItem).Intitule + 
-                " Nom : " + TxtBoxNom.Text + 
-                " Prenom : " + TxtBoxPrenom.Text + 
-                " Telephone : " + TxtBoxTelephone.Text);
+
+            this.bdd.AddPersonnel(
+                TxtBoxNom.Text, 
+                TxtBoxPrenom.Text, 
+                TxtBoxTelephone.Text, 
+                blob, 
+                (Service) LstBoxServices.SelectedItem, 
+                (Fonction) LstBoxFonctions.SelectedItem);
+
+            MessageBox.Show("Cette personne a bien été ajouté à la base de données !", "Succès !");
+
+            TxtBoxNom.Text = string.Empty;
+            TxtBoxPrenom.Text = string.Empty;
+            TxtBoxTelephone.Text = string.Empty;
+            LstBoxServices.SelectedIndex = -1;
+            LstBoxFonctions.SelectedIndex = -1;
+            blob = string.Empty;
         }
 
         private void BtnAnnuler_Click(object sender, RoutedEventArgs e)
@@ -56,20 +73,27 @@ namespace AppTrombinoscope
         private void BtnChoisirPhoto_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
-            // fileDialog.Filter = "*.png|*.jpg|*.jpeg";
+            fileDialog.Filter = "PNG Files (*.png)|*.png|JPEG Files (*.jpg; *.jpeg)|*.jpg;*.jpeg";
             fileDialog.RestoreDirectory = true;
             fileDialog.Title = "Choisir une photo de profil";
 
             DialogResult res = fileDialog.ShowDialog();
             if (res.ToString() == "OK")
             {
+                string selectedFileName = fileDialog.FileName;
                 var fileStream = fileDialog.OpenFile();
 
                 BinaryReader binReader = new BinaryReader(fileStream, Encoding.UTF8, false);
 
-                string blob = binReader.ReadString();
-
-                // INSERER DANS LA BDD
+                try
+                {
+                    this.blob = binReader.ReadString();
+                    LabelNomPhoto.Content = selectedFileName.Split('\\').Last();
+                } catch (EndOfStreamException ex) 
+                {
+                    MessageBox.Show("Fichier non valide\nErreur : " + ex.Message, "Erreur");
+                }
+                
             }
             
         }
