@@ -23,8 +23,9 @@ namespace AppTrombinoscope
     /// </summary>
     public partial class GestionPersonnel : Window
     {
-        private string blob = string.Empty;
+        private byte[] blob = new byte[0];
         private bddpersonnels bdd;
+        private string basicPhotoName = "account-25-256.png";
         public GestionPersonnel(bddpersonnels bdd)
         {
             InitializeComponent();
@@ -62,7 +63,12 @@ namespace AppTrombinoscope
             TxtBoxTelephone.Text = string.Empty;
             LstBoxServices.SelectedIndex = -1;
             LstBoxFonctions.SelectedIndex = -1;
-            blob = string.Empty;
+            LabelNomPhoto.Content = string.Empty;
+
+            // Reinitialiser l'image
+            ImagePreAjout.Source = null;
+
+            blob = new byte[0];
         }
 
         private void BtnAnnuler_Click(object sender, RoutedEventArgs e)
@@ -83,12 +89,22 @@ namespace AppTrombinoscope
                 string selectedFileName = fileDialog.FileName;
                 var fileStream = fileDialog.OpenFile();
 
-                BinaryReader binReader = new BinaryReader(fileStream, Encoding.UTF8, false);
-
                 try
                 {
-                    this.blob = binReader.ReadString();
+                    // Read the binary data of the image file
+                    byte[] imageData;
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        fileStream.CopyTo(ms);
+                        imageData = ms.ToArray();
+                        this.blob = imageData;
+                    }
+
+                    // Convertir en image
+                    BitmapImage bitmapImage = ConvertToBitmapImage(imageData);
+                    ImagePreAjout.Source = bitmapImage;
                     LabelNomPhoto.Content = selectedFileName.Split('\\').Last();
+
                 } catch (EndOfStreamException ex) 
                 {
                     MessageBox.Show("Fichier non valide\nErreur : " + ex.Message, "Erreur");
@@ -96,6 +112,31 @@ namespace AppTrombinoscope
                 
             }
             
+        }
+
+        private BitmapImage ConvertToBitmapImage(byte[] imageData)
+        {
+            BitmapImage bitmapImage = new BitmapImage();
+
+            try
+            {
+                // Create a memory stream from the byte array
+                using (MemoryStream memoryStream = new MemoryStream(imageData))
+                {
+                    // Set the memory stream as the source for the BitmapImage
+                    bitmapImage.BeginInit();
+                    bitmapImage.StreamSource = memoryStream;
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.EndInit();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions
+                MessageBox.Show("Erreur lors de la conversion de l'image : " + ex.Message, "Erreur");
+            }
+
+            return bitmapImage;
         }
     }
 }

@@ -70,14 +70,14 @@ namespace BddpersonnelContext
             return bdd.Admins.Any(admin => admin.Nom == utilisateur && admin.Password == mdp);
         }
 
-        public void AddPersonnel(string nom, string prenom, string telephone, string blob, Service service, Fonction fonction)
+        public void AddPersonnel(string nom, string prenom, string telephone, byte[] blob, Service service, Fonction fonction)
         {
             Personnel personnel = new Personnel
             {
                 Nom = nom,
                 Prenom = prenom,
                 Telephone = telephone,
-                Photo = Encoding.UTF8.GetBytes(blob),
+                Photo = blob,
                 Service = service,
                 Fonction = fonction
             };

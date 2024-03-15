@@ -34,8 +34,8 @@
         <Button x:Name="BtnChoisirPhoto" Content="Choisir une photo" HorizontalAlignment="Left" Margin="24,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="131" RenderTransformOrigin="2.88,0.75" Height="31" Grid.Column="1" Click="BtnChoisirPhoto_Click"/>
         <Button x:Name="BtnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="105,8,0,0" Grid.Row="5" VerticalAlignment="Top" Width="131" RenderTransformOrigin="2.88,0.75" Height="30" Grid.Column="2" Grid.ColumnSpan="2" Click="BtnAnnuler_Click"/>
         <Button x:Name="BtnAjouter" Content="Ajouter" HorizontalAlignment="Left" Margin="134,8,0,0" Grid.Row="5" VerticalAlignment="Top" Width="131" RenderTransformOrigin="2.88,0.75" Height="30" Grid.ColumnSpan="2" Click="BtnAjouter_Click"/>
-        <Image Grid.Column="3" HorizontalAlignment="Left" Height="160" Margin="57,60,0,0" Grid.RowSpan="4" VerticalAlignment="Top" Width="148" Source="account-25-256.png"/>
-        <Label x:Name="LabelNomPhoto" Grid.Column="2" Content="" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Width="246" Height="30" Foreground="White" Background="Transparent" FontSize="17" Grid.ColumnSpan="2"/>
+        <Image x:Name="ImagePreAjout" Grid.Column="3" HorizontalAlignment="Left" Height="160" Margin="57,60,0,0" Grid.RowSpan="4" VerticalAlignment="Top" Width="148" Source="account-25-256.png"/>
+        <Label x:Name="LabelNomPhoto" Grid.Column="2" Content="" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Center" Width="246" Height="35" Foreground="White" Background="Transparent" FontSize="17" Grid.ColumnSpan="2" Margin="0,5,0,0"/>
 
     </Grid>
 </Window>
