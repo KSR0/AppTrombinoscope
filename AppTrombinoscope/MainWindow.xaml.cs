@@ -37,7 +37,16 @@ namespace AppTrombinoscope
             BtnGestionServices.IsEnabled = false;
             BtnGestionFonctions.IsEnabled = false;
             BtnGestionPersonnels.IsEnabled = false;
-            this.Title = "Trombinoscope (Connecté en tant que : Utilisateur)";
+            EssayerConnexion();
+
+            // POUR TESTER EN TANT QUE GESTIONNAIRE
+
+            // bdd = new bddpersonnels("localhost", "GestionnaireBDD", "Password1234@but", "3306");
+            // ListePersonnel listePersonnel = new ListePersonnel(bdd);
+            // listePersonnel.ShowDialog();
+            // Close();
+
+            //
         }
 
 
@@ -48,6 +57,11 @@ namespace AppTrombinoscope
         }
 
         private void BtnConnexionBDD_Click(object sender, RoutedEventArgs e)
+        {
+            EssayerConnexion();
+        }
+
+        private void EssayerConnexion()
         {
             string addrIP = Properties.Settings.Default.AdresseIP;
             int port = Properties.Settings.Default.Port;
@@ -60,6 +74,8 @@ namespace AppTrombinoscope
                 bdd.testerConnexion();
                 ChargerDonneesLorsConnexion();
                 connexionValide = true;
+                this.Title = "Trombinoscope (Connecté en tant que : Utilisateur)";
+                BtnListePersonnel.IsEnabled = true;
             }
             catch (Exception exception)
             {
@@ -92,11 +108,25 @@ namespace AppTrombinoscope
             {
                 bdd = connexionEnGestionnaire.Bdd;
                 this.Title = "Trombinoscope (Connecté en tant que : Gestionnaire)";
-                BtnListePersonnel.IsEnabled = true;
                 BtnGestionServices.IsEnabled = true;
                 BtnGestionFonctions.IsEnabled = true;
                 BtnGestionPersonnels.IsEnabled = true;
             }
+        }
+
+        private void BtnGestionPersonnels_Click(object sender, RoutedEventArgs e)
+        {
+            GestionPersonnel gestionPersonnel = new GestionPersonnel(bdd);
+            gestionPersonnel.ShowDialog();
+
+            // INSERER DANS LA BASE le personnel
+
+        }
+
+        private void BtnListePersonnel_Click(object sender, RoutedEventArgs e)
+        {
+            ListePersonnel listePersonnel = new ListePersonnel(bdd);
+            listePersonnel.ShowDialog();
         }
     }
 }

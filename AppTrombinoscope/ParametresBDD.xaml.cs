@@ -38,7 +38,7 @@ namespace AppTrombinoscope
             {
                 Properties.Settings.Default.Port = int.Parse(TxtBoxPort.Text);
             }
-            catch (FormatException exception)
+            catch (FormatException)
             {
                 MessageBox.Show("Le port ne peut contenir que des chiffres !\n", "Erreur");
                 return;

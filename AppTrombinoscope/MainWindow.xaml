@@ -20,10 +20,10 @@
         </Grid.ColumnDefinitions>
         <Menu Height="32" VerticalAlignment="Top" Background="#FF54F8FF" Margin="0,0,0,0" Grid.ColumnSpan="5">
             <MenuItem x:Name="BtnConnexionBDD" Header="Connexion BDD" FontWeight="Bold" Margin="5,0,5,0" Click="BtnConnexionBDD_Click"/>
-            <MenuItem x:Name="BtnListePersonnel" Header="Liste du Personnel" FontWeight="Bold" Margin="5,0,5,0"/>
+            <MenuItem x:Name="BtnListePersonnel" Header="Liste du Personnel" FontWeight="Bold" Margin="5,0,5,0" Click="BtnListePersonnel_Click"/>
             <MenuItem x:Name="BtnGestionServices" Header="Gestion : Services" FontWeight="Bold" Margin="5,0,5,0"/>
             <MenuItem x:Name="BtnGestionFonctions" Header="Gestion : Fonctions" FontWeight="Bold" Margin="5,0,5,0"/>
-            <MenuItem x:Name="BtnGestionPersonnels" Header="Gestion : Personnels" FontWeight="Bold" Margin="5,0,5,0"/>
+            <MenuItem x:Name="BtnGestionPersonnels" Header="Gestion : Personnels" FontWeight="Bold" Margin="5,0,5,0" Click="BtnGestionPersonnels_Click"/>
             <MenuItem x:Name="BtnGestionnaire" Header="Gestionnaire" FontWeight="Bold" Margin="5,0,5,0" Click="BtnGestionnaire_Click"/>
             <MenuItem x:Name="BtnParametresBDD" Header="Paramètre BDD" Height="32" Width="100" Margin="25,0,25,0" FontWeight="Bold" Click="BtnParametresBDD_Click"/>
         </Menu>
