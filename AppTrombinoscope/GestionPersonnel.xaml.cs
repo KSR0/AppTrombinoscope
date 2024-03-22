@@ -111,7 +111,6 @@ namespace AppTrombinoscope
                 }
                 
             }
-            
         }
 
         private BitmapImage ConvertToBitmapImage(byte[] imageData)

@@ -40,10 +40,10 @@ namespace AppTrombinoscope
 
             // A DELETE
 
-            //bdd = new bddpersonnels("localhost", "GestionnaireBDD", "Password1234@but", "3306");
-            //GestionPersonnel gestionPersonnel = new GestionPersonnel(bdd);
-            //gestionPersonnel.ShowDialog();
-            //Close();
+            // bdd = new bddpersonnels("localhost", "GestionnaireBDD", "Password1234@but", "3306");
+            // ListePersonnel listePersonnel = new ListePersonnel(bdd);
+            // listePersonnel.ShowDialog();
+            // Close();
 
             //
         }
@@ -69,6 +69,7 @@ namespace AppTrombinoscope
                 ChargerDonneesLorsConnexion();
                 connexionValide = true;
                 this.Title = "Trombinoscope (Connecté en tant que : Utilisateur)";
+                BtnListePersonnel.IsEnabled = true;
             }
             catch (Exception exception)
             {
@@ -101,7 +102,6 @@ namespace AppTrombinoscope
             {
                 bdd = connexionEnGestionnaire.Bdd;
                 this.Title = "Trombinoscope (Connecté en tant que : Gestionnaire)";
-                BtnListePersonnel.IsEnabled = true;
                 BtnGestionServices.IsEnabled = true;
                 BtnGestionFonctions.IsEnabled = true;
                 BtnGestionPersonnels.IsEnabled = true;
@@ -115,6 +115,12 @@ namespace AppTrombinoscope
 
             // INSERER DANS LA BASE le personnel
 
+        }
+
+        private void BtnListePersonnel_Click(object sender, RoutedEventArgs e)
+        {
+            ListePersonnel listePersonnel = new ListePersonnel(bdd);
+            listePersonnel.ShowDialog();
         }
     }
 }
