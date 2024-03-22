@@ -65,6 +65,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="GestionPersonnel.xaml">
+	  <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GestionFonction.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GestionServices.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -88,6 +96,12 @@
     </Compile>
     <Compile Include="GestionPersonnel.xaml.cs">
       <DependentUpon>GestionPersonnel.xaml</DependentUpon>
+	</Compile>
+    <Compile Include="GestionFonction.xaml.cs">
+      <DependentUpon>GestionFonction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GestionServices.xaml.cs">
+      <DependentUpon>GestionServices.xaml</DependentUpon>
     </Compile>
     <Compile Include="ParametresBDD.xaml.cs">
       <DependentUpon>ParametresBDD.xaml</DependentUpon>

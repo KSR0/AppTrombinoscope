@@ -118,15 +118,24 @@ namespace AppTrombinoscope
         {
             GestionPersonnel gestionPersonnel = new GestionPersonnel(bdd);
             gestionPersonnel.ShowDialog();
-
-            // INSERER DANS LA BASE le personnel
-
         }
 
         private void BtnListePersonnel_Click(object sender, RoutedEventArgs e)
         {
             ListePersonnel listePersonnel = new ListePersonnel(bdd);
             listePersonnel.ShowDialog();
+        }
+
+        private void BtnGestionServices_Click(object sender, RoutedEventArgs e)
+        {
+            GestionServices gestionServices = new GestionServices(bdd);
+            gestionServices.ShowDialog();
+        }
+
+        private void BtnGestionFonctions_Click(object sender, RoutedEventArgs e)
+        {
+            GestionFonctions gestionFonctions = new GestionFonctions(bdd);
+            gestionFonctions.ShowDialog();
         }
     }
 }
