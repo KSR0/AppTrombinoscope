@@ -37,8 +37,9 @@ namespace AppTrombinoscope
             BtnGestionServices.IsEnabled = false;
             BtnGestionFonctions.IsEnabled = false;
             BtnGestionPersonnels.IsEnabled = false;
+            EssayerConnexion();
 
-            // A DELETE
+            // POUR TESTER EN TANT QUE GESTIONNAIRE
 
             // bdd = new bddpersonnels("localhost", "GestionnaireBDD", "Password1234@but", "3306");
             // ListePersonnel listePersonnel = new ListePersonnel(bdd);
@@ -56,6 +57,11 @@ namespace AppTrombinoscope
         }
 
         private void BtnConnexionBDD_Click(object sender, RoutedEventArgs e)
+        {
+            EssayerConnexion();
+        }
+
+        private void EssayerConnexion()
         {
             string addrIP = Properties.Settings.Default.AdresseIP;
             int port = Properties.Settings.Default.Port;

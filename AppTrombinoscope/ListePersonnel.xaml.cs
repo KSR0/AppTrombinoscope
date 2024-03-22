@@ -22,11 +22,10 @@ namespace AppTrombinoscope
     /// </summary>
     public partial class ListePersonnel : Window
     {
-        private bddpersonnels bdd;
         public ListePersonnel(bddpersonnels bdd)
         {
             InitializeComponent();
-            this.bdd = bdd;
+            this.DataContext = new BddpersonnelDataContext();
             DataGridPersonnel.ItemsSource = bdd.GetPersonnel();
         }
     }

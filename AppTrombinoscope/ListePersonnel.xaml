@@ -24,9 +24,9 @@
             </Grid>
         </GroupBox>
 
-        <DataGrid x:Name="DataGridPersonnel" ItemsSource="{Binding Personnel}" HorizontalAlignment="Left" Height="404" Margin="25,41,0,0" VerticalAlignment="Top" Width="531" IsReadOnly="True">
+        <DataGrid x:Name="DataGridPersonnel" HorizontalAlignment="Left" Height="404" Margin="25,41,0,0" VerticalAlignment="Top" Width="531" IsReadOnly="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}" />
+                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"/>
                 <DataGridTextColumn Header="Prénom" Binding="{Binding Prenom}" />
                 <DataGridTextColumn Header="Service" Binding="{Binding Service.Intitule}" />
                 <DataGridTextColumn Header="Fonction" Binding="{Binding Fonction.Intitule}" />
