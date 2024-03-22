@@ -109,18 +109,6 @@ namespace BddpersonnelContext
             try
             {
                 item.Intitule = nom;
-            }
-            catch (MySqlException exception)
-            {
-                throw exception;
-            }
-        }
-
-        public void SupprFonctions(Fonction item)
-        {
-            try
-            {
-                bdd.Fonctions.DeleteOnSubmit(item);
                 bdd.SubmitChanges();
             }
             catch (MySqlException exception)
@@ -129,7 +117,7 @@ namespace BddpersonnelContext
             }
         }
 
-        public void UpdateFonctions(Fonction item)
+        public int SupprFonctions(Fonction item)
         {
             try
             {
@@ -138,8 +126,13 @@ namespace BddpersonnelContext
             }
             catch (MySqlException exception)
             {
-                throw exception;
+                return -1;
             }
+            catch (Exception exception)
+            {
+                return -1;
+            }
+            return 1;
         }
 
         public void AddFonctions(string nom)
@@ -149,6 +142,19 @@ namespace BddpersonnelContext
                 Fonction item = new Fonction();
                 item.Intitule = nom;
                 bdd.Fonctions.InsertOnSubmit(item);
+                bdd.SubmitChanges();
+            }
+            catch (MySqlException exception)
+            {
+                throw exception;
+            }
+        }
+
+        public void UpdateFonctions(string nom, Fonction item)
+        {
+            try
+            {
+                item.Intitule = nom;
                 bdd.SubmitChanges();
             }
             catch (MySqlException exception)

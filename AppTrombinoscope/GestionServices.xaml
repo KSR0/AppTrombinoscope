@@ -5,20 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppTrombinoscope"
         mc:Ignorable="d"
-        Title="Gestion des services" Height="444" Width="681">
+        Title="Gestion des services" Height="444" Width="681" MinHeight="400" MinWidth="600">
     <Grid Background="#FF26B3B9">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="260*"/>
+            <ColumnDefinition Width="154*"/>
+            <ColumnDefinition Width="259*"/>
         </Grid.ColumnDefinitions>
         <Label Content="Listes des Services" HorizontalAlignment="Left" Height="36" Margin="27,31,0,0" VerticalAlignment="Top" Width="185" FontSize="15" FontWeight="Bold"/>
-        <Button x:Name="BtnAjouter" Content="Ajouter" HorizontalAlignment="Left" Height="32" Margin="468,171,0,0" VerticalAlignment="Top" Width="142" Click="AjouterClick"/>
-        <Button x:Name="BtnModifier" Content="modifier" HorizontalAlignment="Left" Height="32" Margin="468,338,0,0" VerticalAlignment="Top" Width="142" Click="modifierClick" IsEnabled="False"/>
-        <Button x:Name="BtnSupprimer" Content="Supprimer" HorizontalAlignment="Left" Height="32" Margin="280,338,0,0" VerticalAlignment="Top" Width="142" Click="SupprimerClick" IsEnabled="False"/>
-        <ListBox Name="LstService" HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="203" Margin="27,72,0,0" ItemsSource="{Binding}" DisplayMemberPath="Intitule" SelectionChanged="LstService_SelectionChanged"/>
-        <Label Content="Nom du service" HorizontalAlignment="Left" Height="32" Margin="280,117,0,0" VerticalAlignment="Top" Width="142" FontWeight="Bold" FontSize="13"/>
-        <TextBox Name="txtNomService" HorizontalAlignment="Left" Height="32" Margin="468,117,0,0" VerticalAlignment="Top" Width="142"/>
-        <TextBox x:Name="txtNouveauNomService" HorizontalAlignment="Left" Height="32" Margin="468,289,0,0" VerticalAlignment="Top" Width="142"/>
-        <Label Content="Nouveau nom" HorizontalAlignment="Left" Height="32" Margin="280,289,0,0" VerticalAlignment="Top" Width="142" FontWeight="Bold" FontSize="13"/>
+        <Button x:Name="BtnAjouter" Content="Ajouter" Height="32" Margin="30,171,63,0" VerticalAlignment="Top" Click="AjouterClick" Grid.Column="2"/>
+        <ListBox Name="LstService" Margin="27,72,30,22" ItemsSource="{Binding}" DisplayMemberPath="Intitule" SelectionChanged="LstService_SelectionChanged">
+            <ListBox.Resources>
+                <ContextMenu x:Key="ItemContextMenu">
+                    <MenuItem Header="Supprimer" Click="SupprService"/>
+                    <MenuItem Header="Modifier" Click="ModifierService"/>
+                </ContextMenu>
+            </ListBox.Resources>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="ContextMenu" Value="{StaticResource ItemContextMenu}"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+        <Label Content="Nom du service" Height="32" Margin="20,117,16,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Grid.Column="1"/>
+        <TextBox Name="txtNomService" Height="32" Margin="30,117,63,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <TextBox x:Name="txtNouveauNomService" Height="32" Margin="30,289,63,0" VerticalAlignment="Top" Grid.Column="2" Visibility="Hidden"/>
+        <Label x:Name="labelNouveauNom" Content="Nouveau nom" Height="32" Margin="20,289,16,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Grid.Column="1" Visibility="Hidden"/>
+        <Button x:Name="BtnValider" Content="Valider" Height="32" Margin="30,342,63,0" VerticalAlignment="Top" Click="ValiderClick" Grid.Column="2" Visibility="Hidden"/>
 
     </Grid>
 </Window>

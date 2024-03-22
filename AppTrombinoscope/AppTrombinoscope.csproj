@@ -59,6 +59,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GestionFonction.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GestionServices.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -77,6 +81,9 @@
     </Compile>
     <Compile Include="ConnexionEnGestionnaire.xaml.cs">
       <DependentUpon>ConnexionEnGestionnaire.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GestionFonction.xaml.cs">
+      <DependentUpon>GestionFonction.xaml</DependentUpon>
     </Compile>
     <Compile Include="GestionServices.xaml.cs">
       <DependentUpon>GestionServices.xaml</DependentUpon>

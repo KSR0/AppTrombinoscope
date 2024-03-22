@@ -53,7 +53,38 @@ namespace AppTrombinoscope
             txtNomService.Text = "";
         }
 
-        private void modifierClick(object sender, RoutedEventArgs e)
+        private void SupprService(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Voulez-vous vraiment supprimer ce service ?", "Confirmation", MessageBoxButton.YesNo); ;
+            if (result == MessageBoxResult.Yes)
+            {
+                if (bdd.SupprServices((Service)LstService.SelectedItem) == -1)
+                {
+                    MessageBox.Show("Des membres du personnel sont affecter à ce service !\nVeuillez  les désafécter de leurs services avant de le supprimer.");
+                } else
+                {
+                    LstService.ItemsSource = bdd.GetServices();
+                }
+            }
+        }
+
+        private void ModifierService(object sender, RoutedEventArgs e)
+        {
+            txtNouveauNomService.Visibility = Visibility.Visible;
+            labelNouveauNom.Visibility = Visibility.Visible;
+            BtnValider.Visibility = Visibility.Visible;
+        }
+        
+
+        private void LstService_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            txtNouveauNomService.Text = ((Service)LstService.SelectedItem).Intitule;
+            txtNouveauNomService.Visibility = Visibility.Hidden;
+            labelNouveauNom.Visibility = Visibility.Hidden;
+            BtnValider.Visibility = Visibility.Hidden;
+        }
+
+        private void ValiderClick(object sender, RoutedEventArgs e)
         {
             if (txtNouveauNomService.Text == "")
             {
@@ -70,31 +101,14 @@ namespace AppTrombinoscope
                 }
             }
 
-            bdd.UpdateServices(txtNouveauNomService.Text, (Service)LstService.SelectedItem);
-            txtNouveauNomService.Text = "";
-        }
-
-        private void SupprimerClick(object sender, RoutedEventArgs e)
-        {
-            if (bdd.SupprServices((Service)LstService.SelectedItem) == -1)
+            MessageBoxResult result = MessageBox.Show("Voulez-vous vraiment modifier ce service ?", "Confirmation", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
             {
-                MessageBox.Show("Des membres du personnel sont affecter à ce service !\nVeuillez  les désafécter de leurs services avant de le supprimer.");
-            } else
-            {
-                LstService.ItemsSource = bdd.GetServices();
-            }
-        }
-
-        private void LstService_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (LstService.SelectedIndex.ToString() != "-1")
-            {
-                BtnSupprimer.IsEnabled = true;
-                BtnModifier.IsEnabled = true;
-            } else
-            {
-                BtnSupprimer.IsEnabled = false;
-                BtnModifier.IsEnabled = false;
+                bdd.UpdateServices(txtNouveauNomService.Text, (Service)LstService.SelectedItem);
+                txtNouveauNomService.Text = ((Service)LstService.SelectedItem).Intitule;
+                txtNouveauNomService.Visibility = Visibility.Hidden;
+                labelNouveauNom.Visibility = Visibility.Hidden;
+                BtnValider.Visibility = Visibility.Hidden;
             }
         }
     }

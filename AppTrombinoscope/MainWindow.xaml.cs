@@ -106,5 +106,11 @@ namespace AppTrombinoscope
             GestionServices gestionServices = new GestionServices(bdd);
             gestionServices.ShowDialog();
         }
+
+        private void BtnGestionFonctions_Click(object sender, RoutedEventArgs e)
+        {
+            GestionFonctions gestionFonctions = new GestionFonctions(bdd);
+            gestionFonctions.ShowDialog();
+        }
     }
 }
