@@ -97,12 +97,14 @@ namespace AppTrombinoscope
                     {
                         fileStream.CopyTo(ms);
                         imageData = ms.ToArray();
-                        this.blob = imageData;
+                       
                     }
 
                     // Convertir en image
                     BitmapImage bitmapImage = ConvertToBitmapImage(imageData);
                     ImagePreAjout.Source = bitmapImage;
+                    this.blob = CompresserImageStream(bitmapImage, 75, 100, 50);
+
                     LabelNomPhoto.Content = selectedFileName.Split('\\').Last();
 
                 } catch (EndOfStreamException ex) 
@@ -137,5 +139,27 @@ namespace AppTrombinoscope
 
             return bitmapImage;
         }
+
+        private byte[] CompresserImageStream(BitmapImage image, int maxWidth, int maxHeight, int quality)
+        {
+            BitmapSource bitmapSource = image as BitmapSource;
+
+            double scaleX = (double)maxWidth / bitmapSource.PixelWidth;
+            double scaleY = (double)maxHeight / bitmapSource.PixelHeight;
+            double scale = Math.Min(scaleX, scaleY);
+
+            var resizedImage = new TransformedBitmap(bitmapSource, new ScaleTransform(scale, scale));
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(resizedImage));
+                encoder.QualityLevel = quality;
+                encoder.Save(ms);
+                return ms.ToArray();
+            }
+        }
+
+
     }
 }
