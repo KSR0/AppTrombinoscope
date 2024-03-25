@@ -70,6 +70,7 @@ namespace AppTrombinoscope
 
         private void ModifierService(object sender, RoutedEventArgs e)
         {
+            txtNouveauNomService.Text = ((Service)LstService.SelectedItem).Intitule;
             txtNouveauNomService.Visibility = Visibility.Visible;
             labelNouveauNom.Visibility = Visibility.Visible;
             BtnValider.Visibility = Visibility.Visible;
@@ -78,7 +79,6 @@ namespace AppTrombinoscope
 
         private void LstService_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            txtNouveauNomService.Text = ((Service)LstService.SelectedItem).Intitule;
             txtNouveauNomService.Visibility = Visibility.Hidden;
             labelNouveauNom.Visibility = Visibility.Hidden;
             BtnValider.Visibility = Visibility.Hidden;

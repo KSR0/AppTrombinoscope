@@ -40,11 +40,13 @@ namespace AppTrombinoscope
             EssayerConnexion();
 
             // POUR TESTER EN TANT QUE GESTIONNAIRE
-
-            // bdd = new bddpersonnels("localhost", "GestionnaireBDD", "Password1234@but", "3306");
-            // ListePersonnel listePersonnel = new ListePersonnel(bdd);
-            // listePersonnel.ShowDialog();
-            // Close();
+            bdd = new bddpersonnels("localhost", "GestionnaireBDD", "Password1234@but", "3306");
+            BtnGestionServices.IsEnabled = true;
+            BtnGestionFonctions.IsEnabled = true;
+            BtnGestionPersonnels.IsEnabled = true;
+            //ListePersonnel listePersonnel = new ListePersonnel(bdd);
+            //listePersonnel.ShowDialog();
+            //Close();
 
             //
         }
@@ -58,7 +60,7 @@ namespace AppTrombinoscope
 
         private void BtnConnexionBDD_Click(object sender, RoutedEventArgs e)
         {
-            EssayerConnexion();
+            // EssayerConnexion();
         }
 
         private void EssayerConnexion()

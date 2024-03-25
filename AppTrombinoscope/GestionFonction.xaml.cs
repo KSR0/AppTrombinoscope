@@ -61,8 +61,7 @@ namespace AppTrombinoscope
                 if (bdd.SupprFonctions((Fonction)LstFonction.SelectedItem) == -1)
                 {
                     MessageBox.Show("Des membres du personnel sont affecter à ce Fonction !\nVeuillez  les désafécter de leurs Fonctions avant de le supprimer.");
-                }
-                else
+                } else
                 {
                     LstFonction.ItemsSource = bdd.GetFonctions();
                 }
@@ -71,6 +70,7 @@ namespace AppTrombinoscope
 
         private void ModifierFonction(object sender, RoutedEventArgs e)
         {
+            txtNouveauNomFonction.Text = ((Fonction)LstFonction.SelectedItem).Intitule;
             txtNouveauNomFonction.Visibility = Visibility.Visible;
             labelNouveauNom.Visibility = Visibility.Visible;
             BtnValider.Visibility = Visibility.Visible;
@@ -79,7 +79,6 @@ namespace AppTrombinoscope
 
         private void LstFonction_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            txtNouveauNomFonction.Text = ((Fonction)LstFonction.SelectedItem).Intitule;
             txtNouveauNomFonction.Visibility = Visibility.Hidden;
             labelNouveauNom.Visibility = Visibility.Hidden;
             BtnValider.Visibility = Visibility.Hidden;
