@@ -91,7 +91,6 @@ namespace AppTrombinoscope
 
                 try
                 {
-                    // Read the binary data of the image file
                     byte[] imageData;
                     using (MemoryStream ms = new MemoryStream())
                     {
@@ -111,7 +110,6 @@ namespace AppTrombinoscope
                 {
                     MessageBox.Show("Fichier non valide\nErreur : " + ex.Message, "Erreur");
                 }
-                
             }
         }
 
@@ -121,7 +119,6 @@ namespace AppTrombinoscope
 
             try
             {
-                // Create a memory stream from the byte array
                 using (MemoryStream memoryStream = new MemoryStream(imageData))
                 {
                     // Set the memory stream as the source for the BitmapImage
@@ -142,13 +139,13 @@ namespace AppTrombinoscope
 
         private byte[] CompresserImageStream(BitmapImage image, int maxWidth, int maxHeight, int quality)
         {
-            BitmapSource bitmapSource = image as BitmapSource;
+            BitmapSource imgBitmap = image as BitmapSource;
 
-            double scaleX = (double)maxWidth / bitmapSource.PixelWidth;
-            double scaleY = (double)maxHeight / bitmapSource.PixelHeight;
+            double scaleX = (double)maxWidth / imgBitmap.PixelWidth;
+            double scaleY = (double)maxHeight / imgBitmap.PixelHeight;
             double scale = Math.Min(scaleX, scaleY);
 
-            var resizedImage = new TransformedBitmap(bitmapSource, new ScaleTransform(scale, scale));
+            var resizedImage = new TransformedBitmap(imgBitmap, new ScaleTransform(scale, scale));
 
             using (MemoryStream ms = new MemoryStream())
             {
