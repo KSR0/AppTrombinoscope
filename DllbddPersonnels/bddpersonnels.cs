@@ -179,5 +179,19 @@ namespace BddpersonnelContext
                 throw exception;
             }
         }
+        public List<Personnel> GetPersonnelSearch(String txtNom, String txtPrenom, String txtservice, String txtFonction)
+        {
+            try
+            {
+                return bdd.Personnels.ToList().FindAll(x => string.IsNullOrEmpty(txtNom) ? true : x.Nom.ToUpper().Contains(txtNom.ToUpper()))
+                    .FindAll( x => string.IsNullOrEmpty(txtPrenom) ? true : x.Prenom.ToUpper().Contains(txtPrenom.ToUpper()))
+                    .FindAll( x => string.IsNullOrEmpty(txtservice) ? true : x.Service.Intitule.ToUpper().Contains(txtservice.ToUpper()))
+                    .FindAll( x => string.IsNullOrEmpty(txtFonction) ? true : x.Fonction.Intitule.ToUpper().Contains(txtFonction.ToUpper()));
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+        }
     }
 }

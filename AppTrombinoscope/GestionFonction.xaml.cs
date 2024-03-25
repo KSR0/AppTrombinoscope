@@ -36,7 +36,7 @@ namespace AppTrombinoscope
 
             if (txtNomFonction.Text == "")
             {
-                MessageBox.Show("le nom est vide !");
+                MessageBox.Show("le nom est vide !", "Modification Impossible");
                 return;
             }
 
@@ -44,7 +44,7 @@ namespace AppTrombinoscope
             {
                 if (test.Intitule == txtNomFonction.Text)
                 {
-                    MessageBox.Show("Il y a deja un Fonction avec ce nom !");
+                    MessageBox.Show("Il y a deja un Fonction avec ce nom !", "Modification Impossible");
                     return;
                 }
             }
@@ -60,7 +60,7 @@ namespace AppTrombinoscope
             {
                 if (bdd.SupprFonctions((Fonction)LstFonction.SelectedItem) == -1)
                 {
-                    MessageBox.Show("Des membres du personnel sont affecter à ce Fonction !\nVeuillez  les désafécter de leurs Fonctions avant de le supprimer.");
+                    MessageBox.Show("Des membres du personnel sont affecter à ce Fonction !\nVeuillez  les désafécter de leurs Fonctions avant de le supprimer.", "Supprssion Impossible");
                 } else
                 {
                     LstFonction.ItemsSource = bdd.GetFonctions();
@@ -88,7 +88,7 @@ namespace AppTrombinoscope
         {
             if (txtNouveauNomFonction.Text == "")
             {
-                MessageBox.Show("le nom est vide !");
+                MessageBox.Show("le nom est vide !", "Modification Impossible");
                 return;
             }
 
@@ -96,7 +96,7 @@ namespace AppTrombinoscope
             {
                 if (test.Intitule == txtNouveauNomFonction.Text)
                 {
-                    MessageBox.Show("Il y a deja un Fonction avec ce nom !");
+                    MessageBox.Show("Il y a deja un Fonction avec ce nom !", "Modification Impossible");
                     return;
                 }
             }

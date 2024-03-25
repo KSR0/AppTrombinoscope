@@ -36,7 +36,7 @@ namespace AppTrombinoscope
 
             if (txtNomService.Text == "")
             {
-                MessageBox.Show("le nom est vide !");
+                MessageBox.Show("le nom est vide !", "Modification Impossible");
                 return;
             }
 
@@ -44,7 +44,7 @@ namespace AppTrombinoscope
             {
                 if (test.Intitule == txtNomService.Text)
                 {
-                    MessageBox.Show("Il y a deja un service avec ce nom !");
+                    MessageBox.Show("Il y a deja un service avec ce nom !", "Modification Impossible");
                     return;
                 }
             }
@@ -60,7 +60,7 @@ namespace AppTrombinoscope
             {
                 if (bdd.SupprServices((Service)LstService.SelectedItem) == -1)
                 {
-                    MessageBox.Show("Des membres du personnel sont affecter à ce service !\nVeuillez  les désafécter de leurs services avant de le supprimer.");
+                    MessageBox.Show("Des membres du personnel sont affecter à ce service !\nVeuillez  les désafécter de leurs services avant de le supprimer.", "Supprssion Impossible");
                 } else
                 {
                     LstService.ItemsSource = bdd.GetServices();
@@ -88,7 +88,7 @@ namespace AppTrombinoscope
         {
             if (txtNouveauNomService.Text == "")
             {
-                MessageBox.Show("le nom est vide !");
+                MessageBox.Show("le nom est vide !", "Modification Impossible");
                 return;
             }
 
@@ -96,7 +96,7 @@ namespace AppTrombinoscope
             {
                 if (test.Intitule == txtNouveauNomService.Text)
                 {
-                    MessageBox.Show("Il y a deja un service avec ce nom !");
+                    MessageBox.Show("Il y a deja un service avec ce nom !", "Modification Impossible");
                     return;
                 }
             }
