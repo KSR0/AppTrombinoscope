@@ -41,12 +41,11 @@ namespace AppTrombinoscope
             EssayerConnexion();
 
             // POUR TESTER EN TANT QUE GESTIONNAIRE
-            bdd = new bddpersonnels("localhost", "GestionnaireBDD", "Password1234@but", "3306");
-            BtnGestionServices.IsEnabled = true;
-            BtnGestionFonctions.IsEnabled = true;
-            BtnGestionPersonnels.IsEnabled = true;
-            //ListePersonnel listePersonnel = new ListePersonnel(bdd);
-            //listePersonnel.ShowDialog();
+
+            //bdd = new bddpersonnels("localhost", "GestionnaireBDD", "Password1234@but", "3306");
+            //BtnGestionServices.IsEnabled = true;
+            //BtnGestionFonctions.IsEnabled = true;
+            //BtnGestionPersonnels.IsEnabled = true;
             //Close();
 
             //
