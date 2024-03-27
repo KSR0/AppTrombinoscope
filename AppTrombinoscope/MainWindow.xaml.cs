@@ -1,6 +1,7 @@
 ﻿using BddpersonnelContext;
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,10 +42,11 @@ namespace AppTrombinoscope
 
             // POUR TESTER EN TANT QUE GESTIONNAIRE
 
-            // bdd = new bddpersonnels("localhost", "GestionnaireBDD", "Password1234@but", "3306");
-            // ListePersonnel listePersonnel = new ListePersonnel(bdd);
-            // listePersonnel.ShowDialog();
-            // Close();
+            //bdd = new bddpersonnels("localhost", "GestionnaireBDD", "Password1234@but", "3306");
+            //BtnGestionServices.IsEnabled = true;
+            //BtnGestionFonctions.IsEnabled = true;
+            //BtnGestionPersonnels.IsEnabled = true;
+            //Close();
 
             //
         }
@@ -58,7 +60,7 @@ namespace AppTrombinoscope
 
         private void BtnConnexionBDD_Click(object sender, RoutedEventArgs e)
         {
-            EssayerConnexion();
+            // EssayerConnexion();
         }
 
         private void EssayerConnexion()
@@ -92,6 +94,7 @@ namespace AppTrombinoscope
         {
             LstService.ItemsSource = bdd.GetServices();
             LstFonctions.ItemsSource = bdd.GetFonctions();
+            LstMembres.ItemsSource = bdd.GetPersonnel();
         }
 
         private void BtnGestionnaire_Click(object sender, RoutedEventArgs e)
@@ -136,6 +139,33 @@ namespace AppTrombinoscope
         {
             GestionFonctions gestionFonctions = new GestionFonctions(bdd);
             gestionFonctions.ShowDialog();
+        }
+
+        private void TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LstMembres.ItemsSource = bdd.GetPersonnelSearch(TxtBoxNom.Text.ToUpper(), TxtBoxPrenom.Text.ToUpper(), TxtBoxService.Text.ToUpper(), TxtBoxFonction.Text.ToUpper());
+            /*ArrayList lstTemp = new ArrayList();
+
+            foreach (Personnel personne in LstMembres.Items)
+            {
+                if (personne.Nom.ToUpper().Contains(TxtBoxNom.Text.ToUpper()) &&
+                    personne.Prenom.ToUpper().Contains(TxtBoxPrenom.Text.ToUpper()) &&
+                    personne.Service.Intitule.ToUpper().Contains(TxtBoxService.Text.ToUpper())  &&
+                    personne.Fonction.Intitule.ToUpper().Contains(TxtBoxFonction.Text.ToUpper()))
+                {
+                    lstTemp.Add(personne);
+                }
+            }
+            LstMembres.ItemsSource = lstTemp;*/
+        }     
+
+        private void LstFonctions_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TxtBoxFonction.Text = ((Fonction) LstFonctions.SelectedItem).Intitule.ToString();
+        }
+        private void LstServices_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TxtBoxService.Text = ((Service) LstService.SelectedItem).Intitule.ToString();
         }
     }
 }

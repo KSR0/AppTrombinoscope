@@ -92,6 +92,7 @@ namespace BddpersonnelContext
         {
             try
             {
+                bdd.RejectChanges();
                 bdd.Services.DeleteOnSubmit(item);
                 bdd.SubmitChanges();
             }
@@ -112,6 +113,7 @@ namespace BddpersonnelContext
             {
                 Service item = new Service();
                 item.Intitule = nom;
+                bdd.RejectChanges();
                 bdd.Services.InsertOnSubmit(item);
                 bdd.SubmitChanges();
             }
@@ -125,6 +127,7 @@ namespace BddpersonnelContext
         {
             try
             {
+                bdd.RejectChanges();
                 item.Intitule = nom;
                 bdd.SubmitChanges();
             }
@@ -138,6 +141,7 @@ namespace BddpersonnelContext
         {
             try
             {
+                bdd.RejectChanges();
                 bdd.Fonctions.DeleteOnSubmit(item);
                 bdd.SubmitChanges();
             }
@@ -158,6 +162,7 @@ namespace BddpersonnelContext
             {
                 Fonction item = new Fonction();
                 item.Intitule = nom;
+                bdd.RejectChanges();
                 bdd.Fonctions.InsertOnSubmit(item);
                 bdd.SubmitChanges();
             }
@@ -171,10 +176,25 @@ namespace BddpersonnelContext
         {
             try
             {
+                bdd.RejectChanges();
                 item.Intitule = nom;
                 bdd.SubmitChanges();
             }
             catch (MySqlException exception)
+            {
+                throw exception;
+            }
+        }
+        public List<Personnel> GetPersonnelSearch(String txtNom, String txtPrenom, String txtservice, String txtFonction)
+        {
+            try
+            {
+                return bdd.Personnels.ToList().FindAll(x => string.IsNullOrEmpty(txtNom) ? true : x.Nom.ToUpper().Contains(txtNom.ToUpper()))
+                    .FindAll( x => string.IsNullOrEmpty(txtPrenom) ? true : x.Prenom.ToUpper().Contains(txtPrenom.ToUpper()))
+                    .FindAll( x => string.IsNullOrEmpty(txtservice) ? true : x.Service.Intitule.ToUpper().Contains(txtservice.ToUpper()))
+                    .FindAll( x => string.IsNullOrEmpty(txtFonction) ? true : x.Fonction.Intitule.ToUpper().Contains(txtFonction.ToUpper()));
+            }
+            catch (Exception exception)
             {
                 throw exception;
             }

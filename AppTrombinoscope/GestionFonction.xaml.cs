@@ -36,7 +36,7 @@ namespace AppTrombinoscope
 
             if (txtNomFonction.Text == "")
             {
-                MessageBox.Show("le nom est vide !");
+                MessageBox.Show("le nom est vide !", "Modification Impossible");
                 return;
             }
 
@@ -44,7 +44,7 @@ namespace AppTrombinoscope
             {
                 if (test.Intitule == txtNomFonction.Text)
                 {
-                    MessageBox.Show("Il y a deja un Fonction avec ce nom !");
+                    MessageBox.Show("Il y a deja un Fonction avec ce nom !", "Modification Impossible");
                     return;
                 }
             }
@@ -60,9 +60,8 @@ namespace AppTrombinoscope
             {
                 if (bdd.SupprFonctions((Fonction)LstFonction.SelectedItem) == -1)
                 {
-                    MessageBox.Show("Des membres du personnel sont affecter à ce Fonction !\nVeuillez  les désafécter de leurs Fonctions avant de le supprimer.");
-                }
-                else
+                    MessageBox.Show("Des membres du personnel sont affecter à ce Fonction !\nVeuillez  les désafécter de leurs Fonctions avant de le supprimer.", "Supprssion Impossible");
+                } else
                 {
                     LstFonction.ItemsSource = bdd.GetFonctions();
                 }
@@ -71,6 +70,7 @@ namespace AppTrombinoscope
 
         private void ModifierFonction(object sender, RoutedEventArgs e)
         {
+            txtNouveauNomFonction.Text = ((Fonction)LstFonction.SelectedItem).Intitule;
             txtNouveauNomFonction.Visibility = Visibility.Visible;
             labelNouveauNom.Visibility = Visibility.Visible;
             BtnValider.Visibility = Visibility.Visible;
@@ -79,7 +79,6 @@ namespace AppTrombinoscope
 
         private void LstFonction_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            txtNouveauNomFonction.Text = ((Fonction)LstFonction.SelectedItem).Intitule;
             txtNouveauNomFonction.Visibility = Visibility.Hidden;
             labelNouveauNom.Visibility = Visibility.Hidden;
             BtnValider.Visibility = Visibility.Hidden;
@@ -89,7 +88,7 @@ namespace AppTrombinoscope
         {
             if (txtNouveauNomFonction.Text == "")
             {
-                MessageBox.Show("le nom est vide !");
+                MessageBox.Show("le nom est vide !", "Modification Impossible");
                 return;
             }
 
@@ -97,7 +96,7 @@ namespace AppTrombinoscope
             {
                 if (test.Intitule == txtNouveauNomFonction.Text)
                 {
-                    MessageBox.Show("Il y a deja un Fonction avec ce nom !");
+                    MessageBox.Show("Il y a deja un Fonction avec ce nom !", "Modification Impossible");
                     return;
                 }
             }

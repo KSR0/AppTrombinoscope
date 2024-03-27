@@ -25,7 +25,7 @@
             <MenuItem x:Name="BtnGestionFonctions" Header="Gestion : Fonctions" FontWeight="Bold" Margin="5,0,5,0" Click="BtnGestionFonctions_Click"/>
             <MenuItem x:Name="BtnGestionPersonnels" Header="Gestion : Personnels" FontWeight="Bold" Margin="5,0,5,0" Click="BtnGestionPersonnels_Click"/>
             <MenuItem x:Name="BtnGestionnaire" Header="Gestionnaire" FontWeight="Bold" Margin="5,0,5,0" Click="BtnGestionnaire_Click"/>
-            <MenuItem x:Name="BtnParametresBDD" Header="Paramètre BDD" Height="32" Width="100" Margin="25,0,25,0" FontWeight="Bold" Click="BtnParametresBDD_Click"/>
+            <MenuItem x:Name="BtnParametresBDD" Header="Paramètres BDD" Height="32" Width="100" Margin="25,0,25,0" FontWeight="Bold" Click="BtnParametresBDD_Click"/>
         </Menu>
         <Label Content="Service" Margin="96,0,66,9" FontWeight="Bold" RenderTransformOrigin="0.466,2.071" HorizontalAlignment="Center" Height="28" VerticalAlignment="Bottom"/>
         <Label Content="Fonctions" Margin="60,0,60,9" FontWeight="Bold" Grid.Column="1" RenderTransformOrigin="0.2,0.464" Height="28" VerticalAlignment="Bottom"/>
@@ -35,14 +35,14 @@
         <Label Content="Service :" HorizontalAlignment="Right" Height="28" Margin="0,179,10,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Grid.Column="3" Grid.Row="1"/>
         <Label Content="Fonction :" HorizontalAlignment="Right" Height="28" Margin="0,225,10,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Grid.Column="3" Grid.Row="1"/>
         <Label Content="Téléphone :" HorizontalAlignment="Right" Height="28" Margin="0,279,10,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Grid.Column="3" Grid.Row="1"/>
-        <ListView x:Name="LstService" Margin="46,10,18,35" Grid.Row="1" >
+        <ListView x:Name="LstService" Margin="46,10,18,35" Grid.Row="1" SelectionChanged="LstServices_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Intitule" DisplayMemberBinding="{Binding Intitule}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView Name="LstFonctions" Margin="14,10,22,35" Grid.Column="1" Grid.Row="1">
+        <ListView Name="LstFonctions" Margin="14,10,22,35" Grid.Column="1" Grid.Row="1" SelectionChanged="LstFonctions_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Intitule" DisplayMemberBinding="{Binding Intitule}"/>
@@ -52,15 +52,16 @@
         <ListView Name="LstMembres" Margin="13,10,28,35" Grid.Column="2" Grid.Row="1">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                    <GridViewColumn Header="Prenom" DisplayMemberBinding="{Binding Prenom}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox Name="TxtBoxNom" Height="28" Margin="43,10,84,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="4" Grid.Row="1"/>
-        <TextBox Name="TxtBoxPrenom" Height="28" Margin="43,53,84,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="4" Grid.Row="1"/>
-        <TextBox Name="TxtBoxService" Height="28" Margin="43,179,84,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="4" Grid.Row="1"/>
-        <TextBox Name="TxtBoxFonction" Height="28" Margin="43,225,84,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.632,7.714" Grid.Column="4" Grid.Row="1"/>
-        <TextBox Name="TxtBoxTelephone" Height="28" Margin="43,279,84,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="4" Grid.Row="1"/>
+        <TextBox Name="TxtBoxNom" Height="28" Margin="43,10,84,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="4" Grid.Row="1" TextChanged="TextChanged"/>
+        <TextBox Name="TxtBoxPrenom" Height="28" Margin="43,53,84,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="4" Grid.Row="1" TextChanged="TextChanged"/>
+        <TextBox Name="TxtBoxService" Height="28" Margin="43,179,84,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="4" Grid.Row="1" TextChanged="TextChanged"/>
+        <TextBox Name="TxtBoxFonction" Height="28" Margin="43,225,84,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.632,7.714" Grid.Column="4" Grid.Row="1" TextChanged="TextChanged"/>
+        <TextBox Name="TxtBoxTelephone" Height="28" Margin="43,279,84,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Grid.Column="4" Grid.Row="1" TextChanged="TextChanged"/>
 
     </Grid>
 </Window>

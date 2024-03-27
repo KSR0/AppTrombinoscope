@@ -5,14 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppTrombinoscope"
         mc:Ignorable="d"
-        Title="Gestion des Fonctions" Height="444" Width="681">
+        Title="Gestion des Fonctions" Height="444" Width="681" MinHeight="444" MinWidth="681">
     <Grid Background="#FF26B3B9">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="268*"/>
+            <ColumnDefinition Width="175*"/>
+            <ColumnDefinition Width="230*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Listes des Fonctions" HorizontalAlignment="Left" Height="36" Margin="27,31,0,0" VerticalAlignment="Top" Width="185" FontSize="15" FontWeight="Bold"/>
-        <Button x:Name="BtnAjouter" Content="Ajouter" HorizontalAlignment="Left" Height="32" Margin="468,171,0,0" VerticalAlignment="Top" Width="142" Click="AjouterClick"/>
-        <ListBox Name="LstFonction" HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="203" Margin="27,72,0,0" ItemsSource="{Binding}" DisplayMemberPath="Intitule" SelectionChanged="LstFonction_SelectionChanged">
+        <Label Content="Listes des Fonctions" Height="36" Margin="27,31,56,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold"/>
+        <Button x:Name="BtnAjouter" Content="Ajouter" Height="32" Margin="25,171,63,0" VerticalAlignment="Top" Click="AjouterClick" Grid.Column="2"/>
+        <ListBox Name="LstFonction" Margin="27,72,38,22" ItemsSource="{Binding}" DisplayMemberPath="Intitule" SelectionChanged="LstFonction_SelectionChanged">
             <ListBox.Resources>
                 <ContextMenu x:Key="ItemContextMenu">
                     <MenuItem Header="Supprimer" Click="SupprFonction"/>
@@ -25,11 +27,11 @@
                 </Style>
             </ListBox.ItemContainerStyle>
         </ListBox>
-        <Label Content="Nom du Fonction" HorizontalAlignment="Left" Height="32" Margin="280,117,0,0" VerticalAlignment="Top" Width="142" FontWeight="Bold" FontSize="13"/>
-        <TextBox Name="txtNomFonction" HorizontalAlignment="Left" Height="32" Margin="468,117,0,0" VerticalAlignment="Top" Width="142"/>
-        <TextBox x:Name="txtNouveauNomFonction" Height="32" Margin="30,289,63,0" VerticalAlignment="Top" Grid.Column="2" Visibility="Hidden"/>
-        <Label x:Name="labelNouveauNom" Content="Nouveau nom" Height="32" Margin="20,289,16,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Grid.Column="1" Visibility="Hidden"/>
-        <Button x:Name="BtnValider" Content="Valider" Height="32" Margin="30,342,63,0" VerticalAlignment="Top" Click="ValiderClick" Grid.Column="2" Visibility="Hidden"/>
+        <Label Content="Nom du Fonction" Height="32" Margin="12,117,21,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Grid.Column="1"/>
+        <TextBox Name="txtNomFonction" Height="32" Margin="25,117,63,0" VerticalAlignment="Top" Grid.Column="2"/>
+        <TextBox x:Name="txtNouveauNomFonction" Height="32" Margin="24.717,289,63,0" VerticalAlignment="Top" Visibility="Hidden" Grid.Column="2"/>
+        <Label x:Name="labelNouveauNom" Content="Nouveau nom" Height="32" Margin="12,289,21.283,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="13" Visibility="Hidden" Grid.Column="1"/>
+        <Button x:Name="BtnValider" Content="Valider" Height="32" Margin="24.717,342,63,0" VerticalAlignment="Top" Click="ValiderClick" Visibility="Hidden" Grid.Column="2"/>
 
     </Grid>
 </Window>

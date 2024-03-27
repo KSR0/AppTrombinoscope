@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AppTrombinoscope"
         mc:Ignorable="d"
-        Title="Gestion des services" Height="444" Width="681" MinHeight="400" MinWidth="600">
+        Title="Gestion des services" Height="444" Width="681" MinHeight="444" MinWidth="681">
     <Grid Background="#FF26B3B9">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="260*"/>
