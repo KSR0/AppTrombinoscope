@@ -66,7 +66,7 @@ namespace AppTrombinoscope
             LabelNomPhoto.Content = string.Empty;
 
             // Reinitialiser l'image
-            ImagePreAjout.Source = null;
+            ImagePreAjout.Source = new BitmapImage(new Uri(basicPhotoName, UriKind.Relative));
 
             blob = new byte[0];
         }
